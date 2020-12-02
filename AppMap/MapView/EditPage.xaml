@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="AppMap.MapView.EditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppMap.MapView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+  >
+  <Page.Resources>
+    <local:DMSConverter x:Key="DMSConverter"></local:DMSConverter>
+    <local:AltitudeConverter x:Key="AltConverter"></local:AltitudeConverter>
+  </Page.Resources>
+  <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="1*"></RowDefinition>
+      <RowDefinition Height="8*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1*"/>
+      <ColumnDefinition Width="1*"/>
+      <ColumnDefinition Width="1*"/>
+    </Grid.ColumnDefinitions>
+    <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+      <TextBlock Text="NickName:"/>
+      <TextBox x:Name="locationName" Text="{x:Bind SelectedLocation.Title}" TextChanged="LocationName_TextChanged"/>
+    </StackPanel>
+    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+      <TextBlock Text="Latitude"/>
+      <TextBlock Text="{x:Bind SelectedLocation.Location.Position.Latitude, Converter={StaticResource DMSConverter}}"/>
+    </StackPanel>
+    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+      <TextBlock Text="Longitude"/>
+      <TextBlock Text="{x:Bind SelectedLocation.Location.Position.Longitude, Converter={StaticResource DMSConverter}}" />
+    </StackPanel>
+    <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical">
+      <TextBlock Text="Altitude"/>
+      <TextBlock Text="{x:Bind SelectedLocation.Location.Position.Altitude, Converter={StaticResource AltConverter}}" />
+    </StackPanel>
+  </Grid>
+</Page>

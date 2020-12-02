@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="AppMap.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppMap"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:UC="using:AppMap.MapView"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:Height="800" d:Width="1000">
+  <Page.Resources>
+    <Style x:Key="Button" TargetType="Button">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="VerticalAlignment" Value="Stretch"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="FontFamily" Value="Comic Sans MS"/>
+      <Setter Property="Background" Value="Red"/>
+    </Style>
+  </Page.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="10*"></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Maps:MapControl x:Name="myMap" Grid.Row="0" 
+            MapProjection="Globe"
+            ZoomLevel="1"
+            MapServiceToken="HwkXuaFODGpTKCiIm1QC~oGsPZtU8pqLQqWSLLuVZXw~Apm8rLYgmv4xAEhGIxBBPOnM-CBzAfeOfPe2yZ5_MOfhBEmuvH6GW-znfP4rzc4v"
+            Layers="{x:Bind MapViewModel.Layers}"
+            MapElementClick="MyMap_MapElementClick">
+    </Maps:MapControl>
+    <Button x:Name="addButton" 
+                Style="{StaticResource Button}" Grid.Row="1" 
+                Click="{x:Bind MapViewModel.AddRandomLocation}">Add Point</Button>
+  </Grid>
+</Page>
