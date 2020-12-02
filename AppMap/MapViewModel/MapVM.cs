@@ -59,9 +59,6 @@ namespace AppMap.MapViewModel {
       });
     }
 
-    public void SelectLocation(MapIcon element) {
-      SelectedLocation = element;
-    }
 
     public MapIcon AddRandomLocation() {
       var getLocation = GetLocation();
@@ -80,6 +77,10 @@ namespace AppMap.MapViewModel {
     public void EditDialog(MapIcon position) {
       SelectLocation(position);
       OpenEditDialog();
+    }
+
+    private void SelectLocation(MapIcon element) {
+      SelectedLocation = element;
     }
 
     private void AddLocation(Location location) {
@@ -114,6 +115,8 @@ namespace AppMap.MapViewModel {
     private async void OpenEditDialog() {
       AppWindow appWindow = await AppWindow.TryCreateAsync();
       Frame appWindowContentFrame = new Frame();
+      appWindow.Title = "Marker Infocard Window";
+      appWindow.RequestSize(new Size(200, 250));
       appWindowContentFrame.Navigate(typeof(EditPage), SelectedLocation);
       ElementCompositionPreview.SetAppWindowContent(appWindow, appWindowContentFrame);
       await appWindow.TryShowAsync();

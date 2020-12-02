@@ -8,7 +8,7 @@
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     xmlns:UC="using:AppMap.MapView"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:Height="800" d:Width="1000">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
   <Page.Resources>
     <Style x:Key="Button" TargetType="Button">
       <Setter Property="HorizontalAlignment" Value="Stretch"/>
